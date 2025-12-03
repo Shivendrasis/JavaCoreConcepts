@@ -1,1 +1,69 @@
+#Definition:
+
+Multithreading in Java is a feature that allows a program to execute multiple threads (smallest units of a task) simultaneously, improving performance and making programs faster and more responsive.
+
+#Why use it?
+
+Better CPU utilization – runs multiple tasks in parallel.
+Responsive UI – e.g., in GUI applications, one thread can handle user input while another processes data.
+Faster execution – tasks that are independent can run simultaneously.
+
+
+##Explanation for interview:
+
+Here, we created two threads (t1 and t2) that run concurrently.
+Each thread executes the run() method independently.
+Using threads, the CPU can perform multiple tasks at the same time.
+
+
+
+#There are two ways:
+
+a) Extending Thread class
+
+class MyThread extends Thread {
+    public void run() {
+        System.out.println("Thread running: " + Thread.currentThread().getName());
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        MyThread t1 = new MyThread();
+        t1.start();  // start() calls run() internally
+    }
+}
+
+
+
+b) Implementing Runnable interface
+
+class MyRunnable implements Runnable {
+    public void run() {
+        System.out.println("Thread running: " + Thread.currentThread().getName());
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Thread t1 = new Thread(new MyRunnable());
+        t1.start();
+    }
+}
+
+
+
+##Thread Life Cycle
+
+States:
+
+New – Thread created but not started.
+
+Runnable – Ready to run; waiting for CPU.
+
+Running – Thread executing.
+
+Waiting/Blocked – Waiting for a resource or notification.
+
+Terminated – Thread finished execution.
 
